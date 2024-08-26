@@ -1,0 +1,7 @@
+# welcome.py
+def print_welcome_message():
+    print("Bem-vindo ao meu repositório GitHub!")
+    print("Sinta-se à vontade para explorar o código e contribuir.")
+
+if __name__ == "__main__":
+    print_welcome_message()
