@@ -1,0 +1,16 @@
+name: Minha Pipeline Simples
+
+# Quando a pipeline roda
+on: [push]
+
+jobs:
+  build:
+    # Máquina virtual onde a pipeline roda
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+        
+      - name: Rodar um script simples
+        run: echo "Pipeline iniciada com sucesso!"
