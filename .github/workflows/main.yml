@@ -1,16 +1,19 @@
-name: Minha Pipeline Simples
+name: Validacao de Codigo Python
 
-# Quando a pipeline roda
 on: [push]
 
 jobs:
   build:
-    # Máquina virtual onde a pipeline roda
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
-        
-      - name: Rodar um script simples
-        run: echo "Pipeline iniciada com sucesso!"
+
+      - name: Configurar o Python na Máquina Virtual
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Executar o teste da calculadora
+        run: python calculadora.py
