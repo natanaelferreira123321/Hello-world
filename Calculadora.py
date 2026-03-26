@@ -6,5 +6,5 @@ def somar(a, b):
 if __name__ == "__main__":
     resultado = somar(2, 3)
     print(f"Testando soma: 2 + 3 = {resultado}")
-    assert resultado == 10, "Erro: A soma deveria ser 5!"
+    assert resultado == 5, "Erro: A soma deveria ser 5!"
     print("Teste passou com sucesso!")
