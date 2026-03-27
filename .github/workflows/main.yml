@@ -17,3 +17,16 @@ jobs:
 
       - name: Executar o teste da calculadora
         run: python calculadora.py
+      - name: Executar o teste da calculadora
+        run: python calculadora.py
+
+      - name: Criar relatório de sucesso
+        if: success() 
+        run: echo "O teste da calculadora passou com sucesso no dia $(date)" > relatorio.txt
+
+      - name: Upload do Relatório
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: meu-relatorio-de-teste
+          path: relatorio.txt
