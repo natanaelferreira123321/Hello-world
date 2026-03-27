@@ -1,32 +1,26 @@
-name: Validacao de Codigo Python
+name: Pipeline de Banco de Dados SQLite
 
 on: [push]
 
 jobs:
-  build:
+  construir_banco:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout do código
+      - name: Copiar arquivos para a máquina
         uses: actions/checkout@v4
 
-      - name: Configurar o Python na Máquina Virtual
+      - name: Instalar Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      - name: Executar o teste da Calculadora
-        run: python Calculadora.py
-      - name: Executar o teste da Calculadora
-        run: python Calculadora.py
+      - name: Executar criacao do banco
+        run: python init_db.py
 
-      - name: Criar relatório de sucesso
-        if: success() 
-        run: echo "O teste da calculadora passou com sucesso no dia $(date)" > relatorio.txt
-
-      - name: Upload do Relatório
+      - name: Entregar o arquivo .db pronto (Artifact)
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: meu-relatorio-de-teste
-          path: relatorio.txt
+          name: meu-banco-de-dados
+          path: biblioteca.db
